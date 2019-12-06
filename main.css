@@ -1,0 +1,26 @@
+﻿body {
+    background-color: #FAFAFA;
+}
+
+.button {
+    background-color: lightblue;
+    border: none;
+    color: white;
+    font-size: 12px;
+    padding: 10px 20px;
+}
+
+.textbox {
+    font-family: Verdana, Arial, Helvetica;
+    font-size: 10pt;
+    color: #1C2321;
+    background-color: #FAFAFA;
+    border: 1px solid #7B7D7D;
+}
+
+.label {
+    color: #1C2321;
+    font-family: Verdana, Arial, Helvetica;
+    font-size: 12px;
+    font-variant: small-caps;
+}

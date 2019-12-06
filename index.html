@@ -1,0 +1,102 @@
+﻿<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Customers</title>
+    <link rel="stylesheet" type="text/css" href="styles/main.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        // use jQuery to define event handlers for page loading
+        // and the button
+
+        $(document).ready(function () {
+            $("#new").click(function () {
+                $.post("/new", {
+                    cusID: document.getElementById("cusID").value,
+                    first: document.getElementById("first").value,
+                    last: document.getElementById("last").value,
+                    address: document.getElementById("address").value,
+                    city: document.getElementById("city").value,
+                    province: document.getElementById("province").value,
+                    postal: document.getElementById("postal").value
+                },
+                    // callback function returns status and data as object literal
+                    function (data, status) {
+                        document.getElementById("cusID").value = data.cusID;
+                        document.getElementById("first").value = data.first;
+                        document.getElementById("last").value = data.last;
+                        document.getElementById("address").value = data.address;
+                        document.getElementById("city").value = data.city;
+                        document.getElementById("province").value = data.province;
+                        document.getElementById("postal").value = data.postal;
+                    });
+            });
+
+            $("#add").click(function () {
+                $.post("/add", {
+                    first: document.getElementById("first").value,
+                    last: document.getElementById("last").value,
+                    address: document.getElementById("address").value,
+                    city: document.getElementById("city").value,
+                    province: document.getElementById("province").value,
+                    postal: document.getElementById("postal").value
+                });
+            });
+
+            $("#update").click(function () {
+                $.post("/update", {
+                    cusID: document.getElementById("cusID").value,
+                    first: document.getElementById("first").value,
+                    last: document.getElementById("last").value,
+                    address: document.getElementById("address").value,
+                    city: document.getElementById("city").value,
+                    province: document.getElementById("province").value,
+                    postal: document.getElementById("postal").value
+                });
+            });
+
+            $("#delete").click(function () {
+                $.post("/delete", {
+                    cusID: document.getElementById("cusID").value
+                });
+            });
+
+            $("#find").click(function () {
+                $.post("/find", {
+                    cusID: document.getElementById("cusID").value
+                    //the output for find goes to console instead of the textboxes
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <label for="cusID" class="label">Customer Number:</label>
+    <input type="text" class="textbox"name="cusID" id="cusID" /> <br /><br />
+    
+    <label for="firstName" class="label">First Name:</label>
+    <input type="text" class="textbox" name="first" id="first" /><br /><br />
+    
+    <label for="lastName" class="label">Last Name:</label>
+    <input type="text" class="textbox" name="last" id="last" /><br /><br />
+    
+    <label for="address" class="label">Address:</label>
+    <input type="text" class="textbox" name="address" id="address" /><br /><br />
+    
+    <label for="city" class="label">City:</label>
+    <input type="text" class="textbox" name="city" id="city" /><br /><br />
+    
+    <label for="address" class="label">Province:</label>
+    <input type="text" class="textbox" name="province" id="province" /><br /><br />
+    
+    <label for="address" class="label">Postal:</label>
+    <input type="text" class="textbox" name="postal" id="postal" /><br /><br />
+   
+    <input type="button" class="button" id="new" value="New" />
+    <input type="button" class="button" id="add" value="Add" />
+    <input type="button" class="button" id="update" value="Update" />
+    <input type="button" class="button" id="delete" value="Delete" />
+    <input type="button" class="button" id="find" value="Find" />
+</body>
+</html>
